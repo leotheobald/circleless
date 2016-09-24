@@ -1,0 +1,35 @@
+{
+  "name": "css-percentage-circle-master",
+  "version": "0.0.1",
+  "description": "a less css3 percent display",
+  "main": "index.html",
+  "author": "leo",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap-less": "^3.3.8",
+    "browserify": "^6.3.2",
+    "http-server": "^0.7.3",
+    "less": "latest",
+    "live-reload": "^0.2.0",
+    "nodemon": "^1.10.0",
+    "parallelshell": "^1.0.0",
+    "watch": "latest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:js": "browserify assets/js/input.js > dist/js/input.js",
+    "watch:js": "watch 'npm run build:js' assets/js/",
+    "build:css": "lessc assets/less/circle.less > dist/css/styles.css",
+    "watch:css": "watch 'npm run build:css' assets/css/",
+    "open:dev": "opener http://localhost:9090",
+    "build": "npm run build:js && npm run build:css",
+    "live-reload": "live-reload --port 9091 dist/",
+    "serve": "http-server . -a localhost -p 9090 -c-1",
+    "nodemon:watch": "nodemon -q -w assets/ --ext '.' --exec 'npm run build'",
+    "dev": "npm run open:dev -s && parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run live-reload' 'npm run serve' 'npm run nodemon:watch'"
+  },
+  "keywords": [
+    "test",
+    "less"
+  ]
+}
